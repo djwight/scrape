@@ -54,7 +54,8 @@ class scraper():
         """
         param = '-n' if platform.system().lower() == 'windows' else '-c'
         command = ['ping', param, '1', url]
-        return subprocess.call(command) == 0
+        output = subprocess.call(command, stdout=subprocess.DEVNULL) == 0
+        return output
 
     def _initialize_selenium(self):
         """
